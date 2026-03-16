@@ -1,0 +1,15 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()  // Google repository a szükséges pluginokhoz
+        mavenCentral()  // Maven repository egyéb függőségekhez
+    }
+    dependencies {
+        // Frissítettem a Gradle Plugin verzióját a legújabb stabil verzióra
+        classpath "com.android.tools.build:gradle:7.4.1"  // Legújabb verzió
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir  // Törli a build könyvtárat
+}
