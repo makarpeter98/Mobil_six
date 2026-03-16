@@ -15,7 +15,6 @@ public class ItemsActivity extends AppCompatActivity {
     public static final String ITEM_KEY = "hu.unideb.inf.mobilsz12.shoppinglist.ItemsActivity.ITEM_KEY_fhgfdhvchfhzfjjfujfjhg";
     private boolean isColorFragmentVisible = false;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,13 +24,39 @@ public class ItemsActivity extends AppCompatActivity {
     public void addItem(View view) {
         Intent replyIntent = new Intent();
 
-        //if (lenyomott gomb szövege == "Cukor") {}
+        //if (button text == "Sugar") {}
         String buttonString = ((Button) view).getText().toString();
         String sugarString = getString(R.string.sugar);
 
-        replyIntent.putExtra(ITEM_KEY, buttonString);
+        if(buttonString.equals(sugarString))
+        {
+            if(isColorFragmentVisible)
+            {
+                replyIntent.putExtra(ITEM_KEY, buttonString + " " + ColorFragment.colorString);
+            }
+            else
+            {
+                displayColorFragment();
+                isColorFragmentVisible = true;
+                return;
+            }
+        }
+        else
+        {
+            replyIntent.putExtra(ITEM_KEY, buttonString);
+        }
 
         setResult(RESULT_OK, replyIntent);
+
         finish();
+    }
+
+    public void displayColorFragment()
+    {
+        ColorFragment colorFragment = ColorFragment.newInstance();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.fragment_container, colorFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
