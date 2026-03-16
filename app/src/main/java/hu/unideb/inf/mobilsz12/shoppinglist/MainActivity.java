@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    // test commit
     private SharedPreferences sharedPreferences;
     private final String sharedPrefFile = "shrprf";
     private static final String SAVESTATE_ITEMS_TEXT = "hu.unideb.inf.mobilsz12.shoppinglist.MainActivity.SAVESTATE_ITEMS_TEXT.asdfjhbfhwefjbkjdsbdfs";
